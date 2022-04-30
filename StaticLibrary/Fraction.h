@@ -16,4 +16,6 @@ public:
 	Fraction();
 	Fraction(int, int);
 	Fraction(int);
+public:
+	bool isValid();
 };

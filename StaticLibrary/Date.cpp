@@ -2,9 +2,9 @@
 
 Date::Date()
 {
-	_day = 1;
-	_month = 1;
-	_year = 1;
+	_day = 0;
+	_month = 0;
+	_year = 0;
 }
 
 Date::Date(int d, int m, int y)
@@ -12,6 +12,8 @@ Date::Date(int d, int m, int y)
 	_day = d;
 	_month = m;
 	_year = y;
+	if (!isValid())
+		cout << "Invalid Date!\n";
 }
 
 bool Date::operator==(const Date& other)

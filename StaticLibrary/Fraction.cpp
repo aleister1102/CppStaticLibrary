@@ -20,10 +20,17 @@ Fraction::Fraction(int x, int y)
 {
 	_num = x;
 	_den = y;
+	if (!isValid())
+		cout << "Invalid Fraction!\n";
 }
 
 Fraction::Fraction(int f)
 {
 	_num = f;
 	_den = 1;
+}
+
+bool Fraction::isValid()
+{
+	return !(_den == 0);
 }
