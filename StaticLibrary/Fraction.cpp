@@ -29,7 +29,7 @@ Fraction::Fraction(const Fraction& other)
 	_den = other._den;
 }
 
-Fraction Fraction::operator=(const Fraction& other)
+Fraction& Fraction::operator=(const Fraction& other)
 {
 	_num = other._num;
 	_den = other._den;

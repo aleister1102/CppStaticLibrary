@@ -3,11 +3,12 @@
 #include "Standard.h"
 #include "State.h"
 
-enum FractionConverterType
+class FractionConverterType
 {
-	LOWEST_TERM = 1,
-	MIXED,
-	DECIMAL
+public:
+	inline static const int LOWEST_TERM = 1;
+	inline static const int  MIXED = 2;
+	inline static const int  DECIMAL = 3;
 };
 
 class Fraction
@@ -27,7 +28,7 @@ public:
 	Fraction();
 	Fraction(int, int);
 	Fraction(int);
-	Fraction operator=(const Fraction&);
+	Fraction& operator=(const Fraction&);
 	Fraction(const Fraction&);
 	~Fraction();
 

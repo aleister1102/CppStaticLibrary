@@ -23,7 +23,7 @@ Date::Date(const Date& other)
 	_year = other._year;
 }
 
-Date Date::operator=(const Date& other)
+Date& Date::operator=(const Date& other)
 {
 	_day = other._day;
 	_month = other._month;

@@ -3,7 +3,7 @@
   <Class Name="Date">
     <Position X="12.25" Y="0.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAACAAAEAEEQQMAAAAAAgABAAAAIAQAQAA=</HashCode>
+      <HashCode>AAAAAAAAIAAACAAAEAEEQQMAAAAAAgABCAAgIAQAQAA=</HashCode>
       <FileName>Date.h</FileName>
     </TypeIdentifier>
   </Class>
@@ -61,13 +61,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MathHelper.h</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Randomizer">
-    <Position X="2.25" Y="3.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAAA=</HashCode>
-      <FileName>Randomizer.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StringHelper">

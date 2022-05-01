@@ -10,13 +10,13 @@ int main()
 #if 1
 
 	Fraction f1(9, 8);
-	FractionConverter* converter = FractionConverterFactory::createConverter(FractionConverterType::MIXED);
+	FractionConverter *converter = FractionConverterFactory::createConverter(FractionConverterType::MIXED);
 	cout << converter->convert(f1) << endl;
 
 	Date date(11, 02, 2002);
 	cout << Converter::toString(date) << endl;
 
-	RandomGenerator* rng = RandomGenerator::Instance();
+	shared_ptr<RandomGenerator> rng = RandomGenerator::Instance();
 	cout << rng->next() << endl;
 
 	DynamicArray<int> intArray;

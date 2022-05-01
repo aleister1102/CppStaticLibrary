@@ -21,7 +21,7 @@ public:
 	Date();
 	Date(int d, int m, int y);
 	Date(const Date& other);
-	Date operator=(const Date& other);
+	Date& operator=(const Date& other);
 	~Date();
 public:
 	bool isLeapYear();
