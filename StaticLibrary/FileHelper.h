@@ -6,14 +6,14 @@ class FileHelper
 {
 private:
 	inline static FileHelper* _instance = nullptr;
-	static fstream _file;
+	static std::fstream _file;
 	FileHelper() {}
 public:
 	static FileHelper* Instance();
 
 public:
-	static void readFile(string);
-	static void writeFile(string);
-	static vector<vector<string>> readCSV(string);
-	static vector<string> readTXT(string);
+	static void readFile(std::string);
+	static void writeFile(std::string);
+	static std::vector<std::vector<std::string>> readCSV(std::string);
+	static std::vector<std::string> readTXT(std::string);
 };

@@ -13,7 +13,7 @@ Date::Date(int d, int m, int y)
 	_month = m;
 	_year = y;
 	if (!isValid())
-		cout << "Invalid Date!\n";
+		std::cout << "Invalid Date!\n";
 }
 
 bool Date::operator==(const Date& other)

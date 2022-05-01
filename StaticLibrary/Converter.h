@@ -8,13 +8,13 @@
 class Converter
 {
 public:
-	static tuple<State, string> tryParse(const string&, regex);
+	static std::tuple<State, std::string> tryParse(const std::string&, std::regex);
 public:
-	static int parseInt(const string& str);
-	static float parseFloat(const string& str);
-	static Date parseDate(const string& str);
-	static Fraction parseFraction(const string& str);
+	static int parseInt(std::string str);
+	static float parseFloat(std::string str);
+	static Date parseDate(std::string str);
+	static Fraction parseFraction(std::string str);
 public:
-	static string toString(const Fraction&);
-	static string toString(const Date&);
+	static std::string toString(Date);
+	static std::string toString(Fraction);
 };

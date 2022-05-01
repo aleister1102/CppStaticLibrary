@@ -38,15 +38,15 @@ public:
 class FractionConverter
 {
 public:
-	virtual string convert(const Fraction& f, void* args = NULL) = 0;
-	virtual Fraction convertBack(const string) = 0;
+	virtual std::string convert(const Fraction& f, void* args = NULL) = 0;
+	virtual Fraction convertBack(const std::string) = 0;
 };
 
 class FractionToLowestTermConverter : public FractionConverter
 {
 public:
-	string convert(const Fraction& f, void* args = NULL);
-	Fraction convertBack(const string) {
+	std::string convert(const Fraction& f, void* args = NULL);
+	Fraction convertBack(const std::string) {
 		// TODO
 		return Fraction();
 	}
@@ -55,8 +55,8 @@ public:
 class FractionToMixedFractionConverter : public FractionConverter
 {
 public:
-	string convert(const Fraction& f, void* args = NULL);
-	Fraction convertBack(const string) {
+	std::string convert(const Fraction& f, void* args = NULL);
+	Fraction convertBack(const std::string) {
 		// TODO
 		return Fraction();
 	}
@@ -65,8 +65,8 @@ public:
 class FractionToDecimalConverter : public FractionConverter
 {
 public:
-	string convert(const Fraction&, void* args = NULL);
-	Fraction convertBack(const string) {
+	std::string convert(const Fraction&, void* args = NULL);
+	Fraction convertBack(const std::string) {
 		// TODO
 		return Fraction();
 	}

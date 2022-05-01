@@ -10,42 +10,42 @@ FileHelper* FileHelper::Instance()
 	return _instance;
 }
 
-void FileHelper::readFile(string fileName)
+void FileHelper::readFile(std::string fileName)
 {
-	_file.open(fileName, ios::out | ios::trunc);
+	_file.open(fileName, std::ios::out | std::ios::trunc);
 
 	if (!_file)
 	{
-		cout << "File is not found!\n";
+		std::cout << "File is not found!\n";
 		_file.close();
 	}
 }
 
-void FileHelper::writeFile(string fileName)
+void FileHelper::writeFile(std::string fileName)
 {
-	_file.open(fileName, ios::out | ios::trunc);
+	_file.open(fileName, std::ios::out | std::ios::trunc);
 
 	if (!_file)
 	{
-		cout << "File is not found!\n";
+		std::cout << "File is not found!\n";
 		_file.close();
 	}
 }
 
 /**
- * Reads a CSV _file and returns a vector of vectors of strings
+ * Reads a CSV _file and returns a std::vector of std::vectors of std::strings
  *
  * @param _fileName the name of the _file to be read
  *
- * @return A vector of vectors of strings.
+ * @return A std::vector of std::vectors of std::strings.
  */
-vector<vector<string>> FileHelper::readCSV(string fileName)
+std::vector<std::vector<std::string>> FileHelper::readCSV(std::string fileName)
 {
-	vector<vector<string>> parsedStrings;
+	std::vector<std::vector<std::string>> parsedStrings;
 
 	readFile(fileName);
 
-	string line;
+	std::string line;
 	getline(_file, line);
 
 	while (!_file.eof())
@@ -62,19 +62,19 @@ vector<vector<string>> FileHelper::readCSV(string fileName)
 }
 
 /**
- * Reads a text _file and returns a vector of strings
+ * Reads a text _file and returns a std::vector of std::strings
  *
  * @param _fileName the name of the _file to be read.
  *
- * @return A vector of strings.
+ * @return A std::vector of std::strings.
  */
-vector<string> FileHelper::readTXT(string fileName)
+std::vector<std::string> FileHelper::readTXT(std::string fileName)
 {
-	vector<string> strings;
+	std::vector<std::string> strings;
 
 	readFile(fileName);
 
-	string line;
+	std::string line;
 	while (!_file.eof())
 	{
 		getline(_file, line);

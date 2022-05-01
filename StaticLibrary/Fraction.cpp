@@ -34,7 +34,7 @@ Fraction::Fraction(int x, int y)
 	_den = y;
 
 	if (!isValid())
-		cout << "Invalid fraction!\n";
+		std::cout << "Invalid fraction!\n";
 }
 
 Fraction::Fraction(int f)
@@ -99,22 +99,22 @@ Fraction Fraction::operator/(Fraction other)
 
 // ------------- Converter -------------
 
-string FractionToLowestTermConverter::convert(const Fraction& f, void* args)
+std::string FractionToLowestTermConverter::convert(const Fraction& f, void* args)
 {
 	Fraction lowest = f.lowestTerm();
 
-	stringstream builder;
+	std::stringstream builder;
 
 	builder << lowest.Numerator() << "/" << lowest.Denominator();
 
-	string result = builder.str();
+	std::string result = builder.str();
 	return result;
 }
 
-string FractionToMixedFractionConverter::convert(const Fraction& f, void* args)
+std::string FractionToMixedFractionConverter::convert(const Fraction& f, void* args)
 {
 	auto lowest = f.lowestTerm();
-	stringstream builder;
+	std::stringstream builder;
 
 	if (lowest.Numerator() >= lowest.Denominator())
 	{
@@ -131,21 +131,21 @@ string FractionToMixedFractionConverter::convert(const Fraction& f, void* args)
 
 	builder << lowest.Denominator();
 
-	string result = builder.str();
+	std::string result = builder.str();
 	return result;
 }
 
-string FractionToDecimalConverter::convert(const Fraction& f, void* args)
+std::string FractionToDecimalConverter::convert(const Fraction& f, void* args)
 {
 	float value = ((float)f.Numerator()) / f.Denominator();
 	int* precision = (int*)args;
 	int number = *precision;
 
-	stringstream builder;
+	std::stringstream builder;
 
-	builder << setprecision(number) << value;
+	builder << std::setprecision(number) << value;
 
-	string result = builder.str();
+	std::string result = builder.str();
 	return result;
 }
 

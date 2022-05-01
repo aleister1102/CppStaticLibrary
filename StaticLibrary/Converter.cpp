@@ -2,21 +2,21 @@
 
 // ------------- tryParse -------------
 
-tuple<State, string> Converter::tryParse(const string& str, regex pattern)
+std::tuple<State, std::string> Converter::tryParse(const std::string& str, std::regex pattern)
 {
 	State flags;
-	string matchStr;
+	std::string matchStr;
 
 	if (str.size() == 0)
 	{
 		flags.setSuccessful(false);
 		flags.setErrorCode(2);
-		flags.setMessage("Empty string");
+		flags.setMessage("Empty std::string");
 	}
 	else
 	{
-		smatch match;
-		bool isMatched = regex_search(str, match, pattern);
+		std::smatch match;
+		bool isMatched = std::regex_search(str, match, pattern);
 		if (!isMatched)
 		{
 			flags.setSuccessful(false);
@@ -35,45 +35,58 @@ tuple<State, string> Converter::tryParse(const string& str, regex pattern)
 
 // ------------- toString -------------
 
-string Converter::toString(const Date& date)
+std::string Converter::toString(Date date)
 {
-	stringstream builder;
+	std::stringstream builder;
 
-	if (date.getDay() < 10)
-		builder << "0";
-	builder << date.getDay() << "/";
-	if (date.getMonth() < 10)
-		builder << "0";
-	builder << date.getMonth() << "/" << date.getYear();
+	if (date.isValid())
+	{
+		if (date.getDay() < 10 && date.getDay() > 0)
+			builder << "0";
+		builder << date.getDay() << "/";
+		if (date.getMonth() < 10 && date.getMonth() > 0)
+			builder << "0";
+		builder << date.getMonth() << "/" << date.getYear();
+	}
+	else
+	{
+		builder << "Can not convert to string, date is invalid";
+	}
 
-	string result = builder.str();
+	std::string result = builder.str();
 	return result;
 }
 
-string Converter::toString(const Fraction& fraction)
+std::string Converter::toString(Fraction fraction)
 {
-	stringstream builder;
+	std::stringstream builder;
+	if (fraction.isValid())
+	{
+		builder << fraction.Numerator() << "/" << fraction.Denominator();
+	}
+	else
+	{
+		builder << "Can not convert to string, fraction is invalid";
+	}
 
-	builder << fraction.Numerator() << "/" << fraction.Denominator();
-
-	string result = builder.str();
+	std::string result = builder.str();
 	return result;
 }
 
 // ------------- parse -------------
 
-int Converter::parseInt(const string& str)
+int Converter::parseInt(const std::string str)
 {
 	State flags;
-	string number;
+	std::string number;
 	int result = 0;
 
-	tie(flags, number) = tryParse(str, regex(NUMBERS));
+	tie(flags, number) = tryParse(str, std::regex(NUMBERS));
 	if (!flags.Successful())
 	{
-		cout << "Can not parse int!\n";
-		cout << "Error code: " << flags.ErrorCode() << endl;
-		cout << "Message: " << flags.Message() << endl;
+		std::cout << "Can not parse int!\n";
+		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
+		std::cout << "Message: " << flags.Message() << std::endl;
 	}
 	else
 	{
@@ -83,18 +96,18 @@ int Converter::parseInt(const string& str)
 	return result;
 }
 
-float Converter::parseFloat(const string& str)
+float Converter::parseFloat(const std::string str)
 {
 	State flags;
-	string number;
+	std::string number;
 	float result = 0;
 
-	tie(flags, number) = tryParse(str, regex(FLOAT));
+	tie(flags, number) = tryParse(str, std::regex(FLOAT));
 	if (!flags.Successful())
 	{
-		cout << "Can not parse float!\n";
-		cout << "Error code: " << flags.ErrorCode() << endl;
-		cout << "Message: " << flags.Message() << endl;
+		std::cout << "Can not parse float!\n";
+		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
+		std::cout << "Message: " << flags.Message() << std::endl;
 	}
 	else
 	{
@@ -104,48 +117,48 @@ float Converter::parseFloat(const string& str)
 	return result;
 }
 
-Date Converter::parseDate(const string& str)
+Date Converter::parseDate(const std::string str)
 {
 	State flags;
-	string date;
-	shared_ptr<Date> result = nullptr;
+	std::string date;
+	std::shared_ptr<Date> result = nullptr;
 
-	tie(flags, date) = tryParse(str, regex(DATE));
+	tie(flags, date) = tryParse(str, std::regex(DATE));
 	if (!flags.Successful())
 	{
-		cout << "Can not parse date!\n";
-		cout << "Error code: " << flags.ErrorCode() << endl;
-		cout << "Message: " << flags.Message() << endl;
+		std::cout << "Can not parse date!\n";
+		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
+		std::cout << "Message: " << flags.Message() << std::endl;
 	}
 	else
 	{
 		auto tokens = StringHelper::split(date, "/");
-		result = make_shared<Date>(parseInt(tokens[0]), parseInt(tokens[1]), parseInt(tokens[2]));
+		result = std::make_shared<Date>(parseInt(tokens[0]), parseInt(tokens[1]), parseInt(tokens[2]));
 		if (!result->isValid())
-			cout << "Invalid date!\n";
+			std::cout << "Invalid date!\n";
 	}
 
 	return *result;
 }
 
-Fraction Converter::parseFraction(const string& str)
+Fraction Converter::parseFraction(const std::string str)
 {
 	State flags;
-	string fraction;
-	shared_ptr<Fraction> result = nullptr;
+	std::string fraction;
+	std::shared_ptr<Fraction> result = nullptr;
 
-	tie(flags, fraction) = tryParse(str, regex(FRACTION));
+	tie(flags, fraction) = tryParse(str, std::regex(FRACTION));
 	if (!flags.Successful())
 	{
-		cout << "Can not parse fraction!\n";
-		cout << "Error code: " << flags.ErrorCode() << endl;
-		cout << "Message: " << flags.Message() << endl;
+		std::cout << "Can not parse fraction!\n";
+		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
+		std::cout << "Message: " << flags.Message() << std::endl;
 	}
 
 	else
 	{
 		auto tokens = StringHelper::split(fraction, "/");
-		result = make_shared<Fraction>(parseInt(tokens[0]), parseInt(tokens[1]));
+		result = std::make_shared<Fraction>(parseInt(tokens[0]), parseInt(tokens[1]));
 	}
 
 	return *result;

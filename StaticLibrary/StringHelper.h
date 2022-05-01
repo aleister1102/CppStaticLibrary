@@ -4,9 +4,9 @@
 class StringHelper
 {
 public:
-	static vector<string> split(string, string delimiter = " ");
-	static string trim(string, char character = ' ');
-	static string searchRegex(string, string);
-	static string toLowerCase(string);
-	static string toUpperCase(string);
+	static std::vector<std::string> split(std::string, std::string delimiter = " ");
+	static std::string trim(std::string, char character = ' ');
+	static std::string searchRegex(std::string, std::string);
+	static std::string toLowerCase(std::string);
+	static std::string toUpperCase(std::string);
 };
