@@ -20,7 +20,7 @@ int main()
 	cout << rng->next() << endl;
 
 	DynamicArray<int> intArray;
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		intArray.push_back(rng->next());
 	}

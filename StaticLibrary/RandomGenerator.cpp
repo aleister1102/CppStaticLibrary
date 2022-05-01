@@ -1,10 +1,10 @@
 #include "RandomGenerator.h"
 
-RandomGenerator* RandomGenerator::Instance()
+std::shared_ptr<RandomGenerator> RandomGenerator::Instance()
 {
 	if (_instance == nullptr)
 	{
-		_instance = new RandomGenerator();
+		_instance = std::shared_ptr<RandomGenerator> (new RandomGenerator());
 	}
 
 	return _instance;

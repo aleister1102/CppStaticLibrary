@@ -4,11 +4,11 @@
 class RandomGenerator
 {
 private:
-	inline static RandomGenerator* _instance = nullptr;
+	inline static std::shared_ptr<RandomGenerator> _instance = nullptr;
 	RandomGenerator();
 
 public:
-	static RandomGenerator* Instance();
+	static std::shared_ptr <RandomGenerator> Instance();
 
 public:
 	virtual int next();

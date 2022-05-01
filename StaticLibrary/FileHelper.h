@@ -5,12 +5,12 @@
 class FileHelper
 {
 private:
-	inline static FileHelper* _instance = nullptr;
+	inline static std::shared_ptr<FileHelper> _instance = nullptr;
 	static std::fstream _file;
 	FileHelper() {}
 
 public:
-	static FileHelper* Instance();
+	static std::shared_ptr<FileHelper> Instance();
 
 public:
 	static void readFile(std::string);

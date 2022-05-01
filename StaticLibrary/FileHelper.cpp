@@ -1,10 +1,10 @@
 #include "FileHelper.h"
 
-FileHelper* FileHelper::Instance()
+std::shared_ptr<FileHelper> FileHelper::Instance()
 {
 	if (_instance == nullptr)
 	{
-		_instance = new FileHelper();
+		_instance =  std::shared_ptr<FileHelper>(new FileHelper());
 	}
 
 	return _instance;
