@@ -1,16 +1,13 @@
 #include <Converter.h>
 #include <Fraction.h>
+using namespace std;
 
 int main()
 {
-	Date date1(-2, -1, 2002);
-	Date date2(20, 2, 2002);
+	Fraction f1(9, 8);
+	FractionConverter *converter = FractionConverterFactory::createConverter(FractionConverterType::MIXED);
 
-	std::cout << Converter::toString(date1) << std::endl;
-	std::cout << Converter::toString(date2) << std::endl;
-
-	Fraction f1(1, 0);
-	std::cout << Converter::toString(f1) << std::endl;
+	cout << converter->convert(f1) << endl;
 
 	return 0;
 }

@@ -1,8 +1,8 @@
 #pragma once
 // Data structure
+#include <memory>
 #include <tuple>
 #include <vector>
-#include <memory>
 // Logic
 #include <cmath>
 #include <cstdlib>

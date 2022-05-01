@@ -1,6 +1,6 @@
 #include "FileHelper.h"
 
-FileHelper* FileHelper::Instance()
+FileHelper *FileHelper::Instance()
 {
 	if (_instance == nullptr)
 	{
@@ -33,11 +33,11 @@ void FileHelper::writeFile(std::string fileName)
 }
 
 /**
- * Reads a CSV _file and returns a std::vector of std::vectors of std::strings
+ * It reads a CSV file and returns a vector of vectors of strings
  *
- * @param _fileName the name of the _file to be read
+ * @param fileName The name of the file to read.
  *
- * @return A std::vector of std::vectors of std::strings.
+ * @return A vector of vectors of strings.
  */
 std::vector<std::vector<std::string>> FileHelper::readCSV(std::string fileName)
 {
@@ -62,9 +62,9 @@ std::vector<std::vector<std::string>> FileHelper::readCSV(std::string fileName)
 }
 
 /**
- * Reads a text _file and returns a std::vector of std::strings
+ * It reads a text file and returns a vector of strings
  *
- * @param _fileName the name of the _file to be read.
+ * @param fileName The name of the file to be read.
  *
  * @return A std::vector of std::strings.
  */

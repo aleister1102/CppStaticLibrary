@@ -16,7 +16,7 @@ Date::Date(int d, int m, int y)
 		std::cout << "Invalid Date!\n";
 }
 
-bool Date::operator==(const Date& other)
+bool Date::operator==(const Date &other)
 {
 	return (_day == other._day && _month == other._month && _year == other._year);
 }

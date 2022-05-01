@@ -4,11 +4,11 @@
 class Randomizer
 {
 private:
-	inline static Randomizer* _instance = nullptr;
+	inline static Randomizer *_instance = nullptr;
 	Randomizer();
 
 public:
-	static Randomizer* Instance();
+	static Randomizer *Instance();
 
 public:
 	virtual int next();

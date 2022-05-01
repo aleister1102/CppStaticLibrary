@@ -81,6 +81,13 @@ std::string StringHelper::searchRegex(std::string line, std::string pattern)
 	return "";
 }
 
+/**
+ * It takes a string and returns a string with all the characters in lowercase
+ *
+ * @param str The string to convert to lowercase.
+ *
+ * @return A string
+ */
 std::string StringHelper::toLowerCase(std::string str)
 {
 	std::string builder;
@@ -93,6 +100,13 @@ std::string StringHelper::toLowerCase(std::string str)
 	return builder;
 }
 
+/**
+ * Converts a string to uppercase.
+ *
+ * @param str The string to convert to upper case.
+ *
+ * @return A string
+ */
 std::string StringHelper::toUpperCase(std::string str)
 {
 	std::string builder;

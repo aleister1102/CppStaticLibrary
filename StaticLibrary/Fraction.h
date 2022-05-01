@@ -1,33 +1,39 @@
 #pragma once
-#include "Standard.h"
 #include "MathHelper.h"
+#include "Standard.h"
 #include "State.h"
 
-enum FractionConverterType {
+enum FractionConverterType
+{
 	LOWEST_TERM = 1,
 	MIXED,
 	DECIMAL
 };
 
-class Fraction {
+class Fraction
+{
 private:
 	int _num;
 	int _den;
+
 public:
 	int Numerator() const { return _num; }
 	int Denominator() const { return _den; }
 	void setNumerator(int value) { _num = value; }
 	void setDenominator(int value) { _den = value; }
-	Fraction lowestTerm() const;
+	Fraction toLowestTerm() const;
+
 public:
 	Fraction();
 	Fraction(int, int);
 	Fraction(int);
-	Fraction(const Fraction&);
-	Fraction operator=(const Fraction&);
+	Fraction(const Fraction &);
+	Fraction operator=(const Fraction &);
 	~Fraction();
+
 public:
 	bool isValid();
+
 public:
 	Fraction operator+(Fraction);
 	Fraction operator-(Fraction);
@@ -38,15 +44,16 @@ public:
 class FractionConverter
 {
 public:
-	virtual std::string convert(const Fraction& f, void* args = NULL) = 0;
+	virtual std::string convert(const Fraction &f, void *args = NULL) = 0;
 	virtual Fraction convertBack(const std::string) = 0;
 };
 
 class FractionToLowestTermConverter : public FractionConverter
 {
 public:
-	std::string convert(const Fraction& f, void* args = NULL);
-	Fraction convertBack(const std::string) {
+	std::string convert(const Fraction &f, void *args = NULL);
+	Fraction convertBack(const std::string)
+	{
 		// TODO
 		return Fraction();
 	}
@@ -55,8 +62,9 @@ public:
 class FractionToMixedFractionConverter : public FractionConverter
 {
 public:
-	std::string convert(const Fraction& f, void* args = NULL);
-	Fraction convertBack(const std::string) {
+	std::string convert(const Fraction &f, void *args = NULL);
+	Fraction convertBack(const std::string)
+	{
 		// TODO
 		return Fraction();
 	}
@@ -65,8 +73,9 @@ public:
 class FractionToDecimalConverter : public FractionConverter
 {
 public:
-	std::string convert(const Fraction&, void* args = NULL);
-	Fraction convertBack(const std::string) {
+	std::string convert(const Fraction &, void *args = NULL);
+	Fraction convertBack(const std::string)
+	{
 		// TODO
 		return Fraction();
 	}
@@ -75,5 +84,5 @@ public:
 class FractionConverterFactory
 {
 public:
-	static FractionConverter* createConverter(int type);
+	static FractionConverter *createConverter(int type);
 };

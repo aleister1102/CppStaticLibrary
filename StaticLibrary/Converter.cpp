@@ -2,7 +2,17 @@
 
 // ------------- tryParse -------------
 
-std::tuple<State, std::string> Converter::tryParse(const std::string& str, std::regex pattern)
+/**
+ * It takes a string and a regex pattern, and returns a tuple containing a State object and a string.
+ * The State object contains information about whether the regex pattern matched the string, and if
+ * not, what the error was. The string contains the matched string
+ *
+ * @param str The string to be parsed
+ * @param pattern The regular expression to use for parsing.
+ *
+ * @return A tuple of type tuple&lt;State, std::string&gt;
+ */
+std::tuple<State, std::string> Converter::tryParse(const std::string &str, std::regex pattern)
 {
 	State flags;
 	std::string matchStr;
@@ -35,6 +45,13 @@ std::tuple<State, std::string> Converter::tryParse(const std::string& str, std::
 
 // ------------- toString -------------
 
+/**
+ * It converts a date object to a string
+ *
+ * @param date The date to convert to a string
+ *
+ * @return A string
+ */
 std::string Converter::toString(Date date)
 {
 	std::stringstream builder;
@@ -57,6 +74,13 @@ std::string Converter::toString(Date date)
 	return result;
 }
 
+/**
+ * This function converts a fraction to a string
+ *
+ * @param fraction The fraction to convert to a string.
+ *
+ * @return A string
+ */
 std::string Converter::toString(Fraction fraction)
 {
 	std::stringstream builder;
@@ -75,6 +99,14 @@ std::string Converter::toString(Fraction fraction)
 
 // ------------- parse -------------
 
+/**
+ * It takes a string, checks if it matches the regex pattern, and if it does, it returns the number as
+ * an integer
+ *
+ * @param str The string to be parsed.
+ *
+ * @return A tuple of State and string.
+ */
 int Converter::parseInt(const std::string str)
 {
 	State flags;
@@ -96,6 +128,14 @@ int Converter::parseInt(const std::string str)
 	return result;
 }
 
+/**
+ * It takes a string, checks if it matches the regex pattern, and if it does, it returns the float
+ * value of the string
+ *
+ * @param str The string to parse
+ *
+ * @return A tuple of State and string.
+ */
 float Converter::parseFloat(const std::string str)
 {
 	State flags;
@@ -117,6 +157,13 @@ float Converter::parseFloat(const std::string str)
 	return result;
 }
 
+/**
+ * It takes a string, tries to parse it as a date, and returns a Date object
+ *
+ * @param str The string to parse
+ *
+ * @return A shared pointer to a Date object.
+ */
 Date Converter::parseDate(const std::string str)
 {
 	State flags;
@@ -141,6 +188,13 @@ Date Converter::parseDate(const std::string str)
 	return *result;
 }
 
+/**
+ * It takes a string, tries to parse it as a fraction, and returns a Fraction object
+ *
+ * @param str The string to be parsed.
+ *
+ * @return A fraction object.
+ */
 Fraction Converter::parseFraction(const std::string str)
 {
 	State flags;

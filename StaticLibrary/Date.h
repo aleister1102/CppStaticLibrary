@@ -20,7 +20,7 @@ public:
 public:
 	Date();
 	Date(int d, int m, int y);
-	bool operator==(const Date& other);
+	bool operator==(const Date &other);
 
 public:
 	bool isLeapYear();
