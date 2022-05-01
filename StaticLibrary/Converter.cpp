@@ -1,39 +1,5 @@
 #include "Converter.h"
 
-// ------------- toString -------------
-
-string Converter::toString(const float& number)
-{
-	stringstream builder;
-	builder << number;
-	return builder.str();
-}
-
-string Converter::toString(const Date& date)
-{
-	stringstream builder;
-
-	if (date.getDay() < 10)
-		builder << "0";
-	builder << date.getDay() << "/";
-	if (date.getMonth() < 10)
-		builder << "0";
-	builder << date.getMonth() << "/" << date.getYear();
-
-	string result = builder.str();
-	return result;
-}
-
-string Converter::toString(const Fraction& fraction)
-{
-	stringstream builder;
-
-	builder << fraction.Numerator() << "/" << fraction.Denominator();
-
-	string result = builder.str();
-	return result;
-}
-
 // ------------- tryParse -------------
 
 tuple<State, string> Converter::tryParse(const string& str, regex pattern)
@@ -64,6 +30,33 @@ tuple<State, string> Converter::tryParse(const string& str, regex pattern)
 	}
 
 	auto result = make_tuple(flags, matchStr);
+	return result;
+}
+
+// ------------- toString -------------
+
+string Converter::toString(const Date& date)
+{
+	stringstream builder;
+
+	if (date.getDay() < 10)
+		builder << "0";
+	builder << date.getDay() << "/";
+	if (date.getMonth() < 10)
+		builder << "0";
+	builder << date.getMonth() << "/" << date.getYear();
+
+	string result = builder.str();
+	return result;
+}
+
+string Converter::toString(const Fraction& fraction)
+{
+	stringstream builder;
+
+	builder << fraction.Numerator() << "/" << fraction.Denominator();
+
+	string result = builder.str();
 	return result;
 }
 
@@ -141,7 +134,7 @@ Fraction Converter::parseFraction(const string& str)
 	string fraction;
 	shared_ptr<Fraction> result = nullptr;
 
-	tie(flags, fraction) = tryParse(str, regex(FLOAT));
+	tie(flags, fraction) = tryParse(str, regex(FRACTION));
 	if (!flags.Successful())
 	{
 		cout << "Can not parse fraction!\n";
@@ -157,4 +150,3 @@ Fraction Converter::parseFraction(const string& str)
 
 	return *result;
 }
-

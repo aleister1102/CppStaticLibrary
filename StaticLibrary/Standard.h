@@ -2,6 +2,7 @@
 // Data structure
 #include <tuple>
 #include <vector>
+#include <memory>
 // Logic
 #include <cmath>
 #include <cstdlib>

@@ -152,7 +152,6 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="Fraction.cpp" />
-    <ClCompile Include="FractionConverter.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Randomizer.cpp" />
     <ClCompile Include="StringHelper.cpp" />
@@ -174,7 +173,8 @@
     <CopyFileToFolders Include="Standard.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FractionConverter.h" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

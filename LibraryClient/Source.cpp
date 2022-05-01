@@ -1,16 +1,11 @@
 #include <Converter.h>
+#include <Fraction.h>
 
 int main()
 {
-	cout << Converter::toString(1.1) << endl;
-	cout << Converter::parseInt("1") << endl;
-	cout << Converter::parseFloat("1.1") << endl;
-	Date date = Converter::parseDate("28/02/2002");
-	cout << Converter::toString(date) << endl;
-	Fraction fraction(1, 0);
-	cout << Converter::toString(fraction) << endl;
-	
-
-	
+	Fraction f1(1, 2);
+	Fraction f2(1, 3);
+	Fraction f3 = f1 + f2;
+	cout << Converter::toString(f3) << endl;
 	return 0;
 }
