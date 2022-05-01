@@ -20,10 +20,14 @@ public:
 public:
 	Date();
 	Date(int d, int m, int y);
-	bool operator==(const Date &other);
-
+	Date(const Date& other);
+	Date operator=(const Date& other);
+	~Date();
 public:
 	bool isLeapYear();
 	bool isValid();
 	int daysInMonth();
+
+public:
+	bool operator==(Date other);
 };

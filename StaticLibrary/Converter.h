@@ -8,7 +8,7 @@
 class Converter
 {
 public:
-	static std::tuple<State, std::string> tryParse(const std::string &, std::regex);
+	static std::tuple<State, std::string> tryParse(std::string, std::regex);
 
 public:
 	static int parseInt(std::string str);

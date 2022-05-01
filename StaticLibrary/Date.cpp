@@ -16,10 +16,22 @@ Date::Date(int d, int m, int y)
 		std::cout << "Invalid Date!\n";
 }
 
-bool Date::operator==(const Date &other)
+Date::Date(const Date& other)
 {
-	return (_day == other._day && _month == other._month && _year == other._year);
+	_day = other._day;
+	_month = other._month;
+	_year = other._year;
 }
+
+Date Date::operator=(const Date& other)
+{
+	_day = other._day;
+	_month = other._month;
+	_year = other._year;
+	return *this;
+}
+
+Date::~Date() {}
 
 bool Date::isLeapYear()
 {
@@ -80,4 +92,11 @@ int Date::daysInMonth()
 	}
 
 	return days;
+}
+
+// ------------- Operator -------------
+
+bool Date::operator==(Date other)
+{
+	return (_day == other._day && _month == other._month && _year == other._year);
 }

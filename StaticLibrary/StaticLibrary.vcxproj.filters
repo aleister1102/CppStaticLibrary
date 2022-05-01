@@ -27,7 +27,7 @@
     <ClCompile Include="FileHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Randomizer.cpp">
+    <ClCompile Include="RandomGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Converter.cpp">
@@ -50,7 +50,7 @@
     <CopyFileToFolders Include="FileHelper.h">
       <Filter>Header Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Randomizer.h">
+    <CopyFileToFolders Include="RandomGenerator.h">
       <Filter>Header Files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Macro.h">
@@ -74,6 +74,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@
  *
  * @return A tuple of type tuple&lt;State, std::string&gt;
  */
-std::tuple<State, std::string> Converter::tryParse(const std::string &str, std::regex pattern)
+std::tuple<State, std::string> Converter::tryParse(std::string str, std::regex pattern)
 {
 	State flags;
 	std::string matchStr;

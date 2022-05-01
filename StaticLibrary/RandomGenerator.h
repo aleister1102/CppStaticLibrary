@@ -1,14 +1,14 @@
 #pragma once
 #include "Standard.h"
 
-class Randomizer
+class RandomGenerator
 {
 private:
-	inline static Randomizer *_instance = nullptr;
-	Randomizer();
+	inline static RandomGenerator* _instance = nullptr;
+	RandomGenerator();
 
 public:
-	static Randomizer *Instance();
+	static RandomGenerator* Instance();
 
 public:
 	virtual int next();

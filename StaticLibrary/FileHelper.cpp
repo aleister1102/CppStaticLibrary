@@ -1,6 +1,6 @@
 #include "FileHelper.h"
 
-FileHelper *FileHelper::Instance()
+FileHelper* FileHelper::Instance()
 {
 	if (_instance == nullptr)
 	{

@@ -23,13 +23,13 @@ Fraction::Fraction(int f)
 	_den = 1;
 }
 
-Fraction::Fraction(const Fraction &other)
+Fraction::Fraction(const Fraction& other)
 {
 	_num = other._num;
 	_den = other._den;
 }
 
-Fraction Fraction::operator=(const Fraction &other)
+Fraction Fraction::operator=(const Fraction& other)
 {
 	_num = other._num;
 	_den = other._den;
@@ -114,7 +114,7 @@ Fraction Fraction::operator/(Fraction other)
  *
  * @return A string
  */
-std::string FractionToLowestTermConverter::convert(const Fraction &f, void *args)
+std::string FractionToLowestTermConverter::convert(const Fraction& f, void* args)
 {
 	Fraction lowest = f.toLowestTerm();
 
@@ -142,7 +142,7 @@ std::string FractionToLowestTermConverter::convert(const Fraction &f, void *args
  *
  * @return A string
  */
-std::string FractionToMixedFractionConverter::convert(const Fraction &f, void *args)
+std::string FractionToMixedFractionConverter::convert(const Fraction& f, void* args)
 {
 	auto lowest = f.toLowestTerm();
 	std::stringstream builder;
@@ -175,10 +175,10 @@ std::string FractionToMixedFractionConverter::convert(const Fraction &f, void *a
  *
  * @return A string
  */
-std::string FractionToDecimalConverter::convert(const Fraction &f, void *args)
+std::string FractionToDecimalConverter::convert(const Fraction& f, void* args)
 {
 	float value = ((float)f.Numerator()) / f.Denominator();
-	int *precision = (int *)args;
+	int* precision = (int*)args;
 	int number = *precision;
 
 	std::stringstream builder;
@@ -198,7 +198,7 @@ std::string FractionToDecimalConverter::convert(const Fraction &f, void *args)
  *
  * @return A pointer to a FractionConverter object.
  */
-FractionConverter *FractionConverterFactory::createConverter(int type)
+FractionConverter* FractionConverterFactory::createConverter(int type)
 {
 	switch (type)
 	{
