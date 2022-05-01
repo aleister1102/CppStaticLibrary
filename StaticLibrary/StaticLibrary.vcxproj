@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="DynamicArray.cpp" />
     <ClCompile Include="FileHelper.cpp" />
     <ClCompile Include="Fraction.cpp" />
     <ClCompile Include="MathHelper.cpp" />
@@ -174,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="DynamicArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

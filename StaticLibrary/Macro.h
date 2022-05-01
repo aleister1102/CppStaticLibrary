@@ -1,6 +1,10 @@
 #pragma once
 #include "Standard.h"
 
+// Constants
+#define PARTITION_SIZE 10
+
+
 // Regex pattern
 #define WORDS "(?! )[A-z ]+"
 #define NUMBERS "-?[0-9]+"

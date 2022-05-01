@@ -39,6 +39,9 @@
     <ClCompile Include="MathHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DynamicArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="StringHelper.h">
@@ -71,8 +74,13 @@
     <CopyFileToFolders Include="MathHelper.h">
       <Filter>Header Files</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="DynamicArray.h">
+      <Filter>Header Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram.cd">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
