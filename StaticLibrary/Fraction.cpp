@@ -53,7 +53,7 @@ Fraction Fraction::toLowestTerm() const
 {
 	int gcd = MathHelper::gcd(_num, _den);
 	int num = _num / gcd;
-	int den = _den / gcd;
+	int den = _den / gcd;					
 
 	if (den < 0 && num < 0)
 	{
@@ -116,7 +116,7 @@ Fraction Fraction::operator/(Fraction other)
  */
 std::string FractionToLowestTermConverter::convert(const Fraction& f, void* args)
 {
-	Fraction lowest = f.toLowestTerm();
+	auto lowest = f.toLowestTerm();
 
 	std::stringstream builder;
 

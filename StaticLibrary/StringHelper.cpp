@@ -38,10 +38,12 @@ std::vector<std::string> StringHelper::split(std::string s, std::string delimite
 std::string StringHelper::trim(std::string line, char character)
 {
 	std::string result = line;
+	
 	while (result.at(0) == character)
 	{
 		result.erase(0, 1);
 	}
+
 	while (result.at(result.length() - 1) == character)
 	{
 		result.erase(result.length() - 1, 1);
