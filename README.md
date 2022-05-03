@@ -18,7 +18,7 @@ Thư viện gồm:
 Project `LibraryClient` là để test thư viện.
 
 ## Install
-Lưu ý: Thư viện này được cần được compile thành file Static Library (`lib`) bằng **Visual 
+Lưu ý: Thư viện này cần được compile thành file Static Library (`lib`) bằng **Visual 
 Studio**.
 
 Nếu cần compile lại thư viện:
