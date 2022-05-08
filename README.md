@@ -18,23 +18,21 @@ Thư viện gồm:
 Project `LibraryClient` là để test thư viện.
 
 ## Install
-Lưu ý: Thư viện này cần được compile thành file Static Library (`lib`) bằng **Visual 
-Studio**.
-
 Nếu cần compile lại thư viện:
+
+0. Cài đặt Visual Studio.
 1. Tạo mới một project, chọn loại project là **library**, kiểu app là **Window Desktop App**.
 2. Thêm các file `.cpp` cùng `.h` trong thư mục **StaticLibrary** vào solution, chọn tất cả các file header trong VS rồi cấu hình "file type" là `copy file`. Cấu hình này giúp cho các file header được copy vào thư mục output của chương trình.
-3. Build project, thư mục output là thư mục **Debug**.
+3. Build project, thư mục output là thư mục **x64/Debug**.
 
 ## Usage
-- Nếu muốn sử dụng ở một project khác:
-	1. Mở phần **Properties** của project lên, chọn mục **VC++ Directories** 
-	2. Thêm vào **Library Directories** và **Include Directories** là đường dẫn thư mục Debug ở trên
+**Lưu ý**: thư viện chỉ có thể sử dụng với Visual Studio.
+- Nếu muốn dùng ngay: tải về mã nguồn ở phần **Release** về và cho tất cả các file header cần dùng kèm file `StaticLibrary.lib` vào thư mục project.
+- Nếu muốn sử dụng ở một project khác và liên kết với thư mục thư viện:
+	1. Mở phần **Properties** của project lên, chọn mục **VC++ Directories**.
+	2. Thêm vào **Library Directories** và **Include Directories** là đường dẫn thư mục Debug ở trên.
 	3. Chọn mục **Linker**, chọn input, thêm vào file `StaticLibrary.lib`.
-	4. Import thư viện cần sử dụng trong file `.cpp/.h` với cú pháp `#include <Header.h>`, với Header là tên file Header.
-- Nếu muốn test nhanh thư viện:
-	1. Mở solution `cpp_libraries` lên và build project `LibraryClient`.
-	2. Test các tính năng của thư viện trong file `Source.cpp`.
+	4. Import thư viện cần sử dụng trong file `.cpp/.h` với cú pháp `#include <Header.h>`, với Header là tên file header.
 
 Có thể tham khảo thêm về cách build thư viện và sử dụng tại [đây](https://docs.microsoft.com/en-us/cpp/build/walkthrough-creating-and-using-a-static-library-cpp?view=msvc-170).
 
