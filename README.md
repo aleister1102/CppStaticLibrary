@@ -15,19 +15,18 @@ Thư viện gồm:
 	- Converter
 	- RandomGenerator
 
-Project `LibraryClient` là để test thư viện.
-
 ## Install
-Nếu cần compile lại thư viện:
+**Lưu ý**: thư viện chỉ có thể sử dụng với Visual Studio.
 
-0. Cài đặt Visual Studio.
-1. Tạo mới một project, chọn loại project là **library**, kiểu app là **Window Desktop App**.
-2. Thêm các file `.cpp` cùng `.h` trong thư mục **StaticLibrary** vào solution, chọn tất cả các file header trong VS rồi cấu hình "file type" là `copy file`. Cấu hình này giúp cho các file header được copy vào thư mục output của chương trình.
-3. Build project, thư mục output là thư mục **x64/Debug**.
+Nếu cần compile lại thư viện:
+1. Cài đặt Visual Studio.
+2. Tạo mới một project, chọn loại project là **library**, kiểu app là **Window Desktop App**.
+3. Thêm các file `.cpp` cùng `.h` trong thư mục **StaticLibrary** vào solution, chọn tất cả các file header trong project rồi cấu hình "file type" là `copy file`. Cấu hình này giúp cho các file header được copy vào thư mục output của chương trình.
+4. Build project, thư mục output là thư mục **x64/Debug**.
 
 ## Usage
-**Lưu ý**: thư viện chỉ có thể sử dụng với Visual Studio.
-- Nếu muốn dùng ngay: tải về mã nguồn ở phần **Release** về và cho tất cả các file header cần dùng kèm file `StaticLibrary.lib` vào thư mục project.
+
+- Nếu muốn dùng ngay: tải về file `StaticLibrary.zip` ở phần **Release** về và cho tất cả các file header cần dùng kèm file `StaticLibrary.lib` vào thư mục project.
 - Nếu muốn sử dụng ở một project khác và liên kết với thư mục thư viện:
 	1. Mở phần **Properties** của project lên, chọn mục **VC++ Directories**.
 	2. Thêm vào **Library Directories** và **Include Directories** là đường dẫn thư mục Debug ở trên.
