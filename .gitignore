@@ -6,3 +6,4 @@ StaticLibrary.vcxproj.filters
 StaticLibrary.vcxproj.user
 cpp_libraries.sln
 *.cd
+.vscode/

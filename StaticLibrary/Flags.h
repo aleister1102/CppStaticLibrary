@@ -1,7 +1,7 @@
 #pragma once
 #include "Standard.h"
 
-class State
+class Flags
 {
 private:
 	bool _successful = true;

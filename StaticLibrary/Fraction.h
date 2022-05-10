@@ -2,6 +2,7 @@
 #include "MathHelper.h"
 #include "Standard.h"
 #include "Flags.h"
+#include "Converter.h"
 
 class FractionConverterType
 {
@@ -33,7 +34,7 @@ public:
 	~Fraction();
 
 public:
-	bool isValid();
+	bool isValid() const;
 
 public:
 	Fraction operator+(Fraction);
@@ -42,18 +43,17 @@ public:
 	Fraction operator/(Fraction);
 };
 
-class FractionConverter
-{
+class FractionConverter : public Converter{
 public:
-	virtual std::string convert(const Fraction& f, void* args = NULL) = 0;
-	virtual Fraction convertBack(const std::string) = 0;
+ 	string convert(const Fraction& f, void* args = NULL);
+	Fraction convertBack(const string);
 };
 
 class FractionToLowestTermConverter : public FractionConverter
 {
 public:
-	std::string convert(const Fraction& f, void* args = NULL);
-	Fraction convertBack(const std::string)
+	string convert(const Fraction& f, void* args = NULL);
+	Fraction convertBack(const string)
 	{
 		// TODO
 		return Fraction();
@@ -63,8 +63,8 @@ public:
 class FractionToMixedFractionConverter : public FractionConverter
 {
 public:
-	std::string convert(const Fraction& f, void* args = NULL);
-	Fraction convertBack(const std::string)
+	string convert(const Fraction& f, void* args = NULL);
+	Fraction convertBack(const string)
 	{
 		// TODO
 		return Fraction();
@@ -74,8 +74,8 @@ public:
 class FractionToDecimalConverter : public FractionConverter
 {
 public:
-	std::string convert(const Fraction&, void* args = NULL);
-	Fraction convertBack(const std::string)
+	string convert(const Fraction&, void* args = NULL);
+	Fraction convertBack(const string)
 	{
 		// TODO
 		return Fraction();

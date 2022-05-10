@@ -1,6 +1,9 @@
 #pragma once
 #include "Standard.h"
 #include "StringHelper.h"
+#include "Macro.h"
+#include "Converter.h"
+#include "Flags.h"
 
 class Date
 {
@@ -24,10 +27,16 @@ public:
 	Date& operator=(const Date& other);
 	~Date();
 public:
-	bool isLeapYear();
-	bool isValid();
-	int daysInMonth();
+	bool isLeapYear() const;
+	bool isValid() const;
+	int daysInMonth() const;
 
 public:
 	bool operator==(Date other);
+};
+
+class DateConverter : public Converter{
+public:
+	string convert(const Date&);
+	Date convertBack(const string);
 };

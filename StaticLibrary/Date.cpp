@@ -16,14 +16,14 @@ Date::Date(int d, int m, int y)
 		std::cout << "Invalid Date!\n";
 }
 
-Date::Date(const Date& other)
+Date::Date(const Date &other)
 {
 	_day = other._day;
 	_month = other._month;
 	_year = other._year;
 }
 
-Date& Date::operator=(const Date& other)
+Date &Date::operator=(const Date &other)
 {
 	_day = other._day;
 	_month = other._month;
@@ -33,12 +33,12 @@ Date& Date::operator=(const Date& other)
 
 Date::~Date() {}
 
-bool Date::isLeapYear()
+bool Date::isLeapYear() const
 {
 	return (((_year % 4 == 0) && (_year % 100 != 0)) || (_year % 400 == 0));
 }
 
-bool Date::isValid()
+bool Date::isValid() const
 {
 	if (_year < 0)
 	{
@@ -58,7 +58,7 @@ bool Date::isValid()
 	return true;
 }
 
-int Date::daysInMonth()
+int Date::daysInMonth() const
 {
 	int days = 0;
 
@@ -99,4 +99,52 @@ int Date::daysInMonth()
 bool Date::operator==(Date other)
 {
 	return (_day == other._day && _month == other._month && _year == other._year);
+}
+
+// ------------- Converter -------------
+
+string DateConverter::convert(const Date &date)
+{
+	stringstream builder;
+
+	if (date.isValid())
+	{
+		if (date.getDay() < 10 && date.getDay() > 0)
+			builder << "0";
+		builder << date.getDay() << "/";
+		if (date.getMonth() < 10 && date.getMonth() > 0)
+			builder << "0";
+		builder << date.getMonth() << "/" << date.getYear();
+	}
+	else
+	{
+		builder << "Can not convert to string, date is invalid";
+	}
+
+	string result = builder.str();
+	return result;
+}
+
+Date DateConverter::convertBack(const string str)
+{
+	Flags flags;
+	string date;
+	shared_ptr<Date> result = nullptr;
+
+	tie(flags, date) = Converter::tryParse(str, regex(DATE));
+	if (!flags.Successful())
+	{
+		cout << "Can not parse date!\n";
+		cout << "Error code: " << flags.ErrorCode() << endl;
+		cout << "Message: " << flags.Message() << endl;
+	}
+	else
+	{
+		auto tokens = StringHelper::split(date, "/");
+		result = make_shared<Date>(Converter::parseInt(tokens[0]), Converter::parseInt(tokens[1]), Converter::parseInt(tokens[2]));
+		if (!result->isValid())
+			cout << "Invalid date!\n";
+	}
+
+	return *result;
 }

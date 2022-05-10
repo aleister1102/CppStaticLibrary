@@ -38,7 +38,7 @@ Fraction& Fraction::operator=(const Fraction& other)
 
 Fraction::~Fraction() {}
 
-bool Fraction::isValid()
+bool Fraction::isValid() const
 {
 	return !(_den == 0);
 }
@@ -105,6 +105,45 @@ Fraction Fraction::operator/(Fraction other)
 
 // ------------- Converter -------------
 
+string FractionConverter::convert(const Fraction& fraction, void* args)
+{
+	stringstream builder;
+	if (fraction.isValid())
+	{
+		builder << fraction.Numerator() << "/" << fraction.Denominator();
+	}
+	else
+	{
+		builder << "Can not convert to string, fraction is invalid";
+	}
+
+	string result = builder.str();
+	return result;
+}
+
+Fraction FractionConverter::convertBack(const string str)
+{
+	Flags flags;
+	string fraction;
+	shared_ptr<Fraction> result = nullptr;
+
+	tie(flags, fraction) = Converter::tryParse(str, regex(FRACTION));
+	if (!flags.Successful())
+	{
+		cout << "Can not parse fraction!\n";
+		cout << "Error code: " << flags.ErrorCode() << endl;
+		cout << "Message: " << flags.Message() << endl;
+	}
+
+	else
+	{
+		auto tokens = StringHelper::split(fraction, "/");
+		result = make_shared<Fraction>(Converter::parseInt(tokens[0]), Converter::parseInt(tokens[1]));
+	}
+
+	return *result;
+}
+
 /**
  * It converts a fraction to its lowest term and returns the result as a string
  *
@@ -114,9 +153,9 @@ Fraction Fraction::operator/(Fraction other)
  *
  * @return A string
  */
-string FractionToLowestTermConverter::convert(const Fraction& f, void* args)
+string FractionToLowestTermConverter::convert(const Fraction& fraction, void* args)
 {
-	auto lowest = f.toLowestTerm();
+	auto lowest = fraction.toLowestTerm();
 
 	stringstream builder;
 
@@ -142,9 +181,9 @@ string FractionToLowestTermConverter::convert(const Fraction& f, void* args)
  *
  * @return A string
  */
-string FractionToMixedFractionConverter::convert(const Fraction& f, void* args)
+string FractionToMixedFractionConverter::convert(const Fraction& fraction, void* args)
 {
-	auto lowest = f.toLowestTerm();
+	auto lowest = fraction.toLowestTerm();
 	stringstream builder;
 
 	if (lowest.Numerator() >= lowest.Denominator())
@@ -175,9 +214,9 @@ string FractionToMixedFractionConverter::convert(const Fraction& f, void* args)
  *
  * @return A string
  */
-string FractionToDecimalConverter::convert(const Fraction& f, void* args)
+string FractionToDecimalConverter::convert(const Fraction& fraction, void* args)
 {
-	float value = ((float)f.Numerator()) / f.Denominator();
+	float value = ((float)fraction.Numerator()) / fraction.Denominator();
 	int* precision = (int*)args;
 	int number = *precision;
 
