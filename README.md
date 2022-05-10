@@ -26,7 +26,7 @@ Nếu cần compile lại thư viện:
 
 ## Usage
 
-- Nếu muốn dùng ngay: tải về file `StaticLibrary.zip` ở phần **Release** về và cho tất cả các file header cần dùng kèm file `StaticLibrary.lib` vào thư mục project.
+- Nếu muốn dùng ngay: tải về file `StaticLibrary.zip` ở phần **Release** về và cho tất cả các file header cần dùng kèm file `StaticLibrary.lib` vào thư mục project. Import thư viện cần sử dụng trong file `.cpp/.h` với cú pháp `#include "Header.h"`, với Header là tên file header.
 - Nếu muốn sử dụng ở một project khác và liên kết với thư mục thư viện:
 	1. Mở phần **Properties** của project lên, chọn mục **VC++ Directories**.
 	2. Thêm vào **Library Directories** và **Include Directories** là đường dẫn thư mục Debug ở trên.

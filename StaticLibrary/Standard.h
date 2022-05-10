@@ -14,3 +14,18 @@
 #include <regex>
 #include <sstream>
 #include <string>
+
+using std::cout;
+using std::endl;
+using std::fstream;
+using std::string;
+using std::stringstream;
+using std::vector;
+using std::regex;
+using std::shared_ptr;
+using std::ios;
+using std::smatch;
+using std::tuple;
+using std::shared_ptr;
+using std::make_shared;
+using std::setprecision;

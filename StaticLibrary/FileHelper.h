@@ -5,16 +5,15 @@
 class FileHelper
 {
 private:
-	inline static std::shared_ptr<FileHelper> _instance = nullptr;
-	static std::fstream _file;
+	inline static shared_ptr<FileHelper> _instance = nullptr;
 	FileHelper() {}
 
 public:
-	static std::shared_ptr<FileHelper> Instance();
+	static shared_ptr<FileHelper> Instance();
 
 public:
-	static void readFile(std::string);
-	static void writeFile(std::string);
-	static std::vector<std::vector<std::string>> readCSV(std::string);
-	static std::vector<std::string> readTXT(std::string);
+	static fstream readFile(string);
+	static fstream writeFile(string);
+	static vector<vector<string>> readCSV(string);
+	static vector<string> readTXT(string);
 };

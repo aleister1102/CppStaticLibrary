@@ -1,7 +1,7 @@
 #pragma once
 #include "MathHelper.h"
 #include "Standard.h"
-#include "State.h"
+#include "Flags.h"
 
 class FractionConverterType
 {

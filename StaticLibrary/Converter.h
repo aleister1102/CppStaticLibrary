@@ -3,20 +3,20 @@
 #include "Fraction.h"
 #include "Macro.h"
 #include "Standard.h"
-#include "State.h"
+#include "Flags.h"
 
 class Converter
 {
 public:
-	static std::tuple<State, std::string> tryParse(std::string, std::regex);
+	static tuple<State, string> tryParse(string, regex);
 
 public:
-	static int parseInt(std::string str);
-	static float parseFloat(std::string str);
-	static Date parseDate(std::string str);
-	static Fraction parseFraction(std::string str);
+	static int parseInt(string str);
+	static float parseFloat(string str);
+	static Date parseDate(string str);
+	static Fraction parseFraction(string str);
 
 public:
-	static std::string toString(Date);
-	static std::string toString(Fraction);
+	static string toString(Date);
+	static string toString(Fraction);
 };

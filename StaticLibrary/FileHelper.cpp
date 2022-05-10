@@ -1,35 +1,41 @@
 #include "FileHelper.h"
 
-std::shared_ptr<FileHelper> FileHelper::Instance()
+shared_ptr<FileHelper> FileHelper::Instance()
 {
 	if (_instance == nullptr)
 	{
-		_instance =  std::shared_ptr<FileHelper>(new FileHelper());
+		_instance = shared_ptr<FileHelper>(new FileHelper());
 	}
 
 	return _instance;
 }
 
-void FileHelper::readFile(std::string fileName)
+fstream FileHelper::readFile(string fileName)
 {
-	_file.open(fileName, std::ios::out | std::ios::trunc);
+	fstream input;
+	input.open(fileName, ios::in);
 
-	if (!_file)
+	if (!input)
 	{
-		std::cout << "File is not found!\n";
-		_file.close();
+		cout << "File is not found!\n";
+		input.close();
 	}
+
+	return input;
 }
 
-void FileHelper::writeFile(std::string fileName)
+fstream FileHelper::writeFile(string fileName)
 {
-	_file.open(fileName, std::ios::out | std::ios::trunc);
+	fstream output;
+	output.open(fileName, ios::out | ios::trunc);
 
-	if (!_file)
+	if (!output)
 	{
-		std::cout << "File is not found!\n";
-		_file.close();
+		cout << "File is not found!\n";
+		output.close();
 	}
+
+	return output;
 }
 
 /**
@@ -39,25 +45,26 @@ void FileHelper::writeFile(std::string fileName)
  *
  * @return A vector of vectors of strings.
  */
-std::vector<std::vector<std::string>> FileHelper::readCSV(std::string fileName)
+vector<vector<string>> FileHelper::readCSV(string fileName)
 {
-	std::vector<std::vector<std::string>> parsedStrings;
+	vector<vector<string>> parsedStrings;
 
-	readFile(fileName);
+	fstream input = readFile(fileName);
+	if (!input) return parsedStrings;
 
-	std::string line;
-	getline(_file, line);
+	string line;
+	getline(input, line);
 
-	while (!_file.eof())
+	while (!input.eof())
 	{
-		getline(_file, line);
+		getline(input, line);
 		if (line == "")
 			continue;
 		auto parsedString = StringHelper::split(line, ",");
 		parsedStrings.push_back(parsedString);
 	}
 
-	_file.close();
+	input.close();
 	return parsedStrings;
 }
 
@@ -66,23 +73,24 @@ std::vector<std::vector<std::string>> FileHelper::readCSV(std::string fileName)
  *
  * @param fileName The name of the file to be read.
  *
- * @return A std::vector of std::strings.
+ * @return A vector of strings.
  */
-std::vector<std::string> FileHelper::readTXT(std::string fileName)
+vector<string> FileHelper::readTXT(string fileName)
 {
-	std::vector<std::string> strings;
+	vector<string> strings;
 
-	readFile(fileName);
+	fstream input = readFile(fileName);
+	if (!input) return strings;
 
-	std::string line;
-	while (!_file.eof())
+	string line;
+	while (!input.eof())
 	{
-		getline(_file, line);
+		getline(input, line);
 		if (line == "")
 			continue;
 		strings.push_back(line);
 	}
 
-	_file.close();
+	input.close();
 	return strings;
 }

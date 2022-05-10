@@ -10,23 +10,23 @@
  * @param str The string to be parsed
  * @param pattern The regular expression to use for parsing.
  *
- * @return A tuple of type tuple&lt;State, std::string&gt;
+ * @return A tuple of type tuple&lt;State, string&gt;
  */
-std::tuple<State, std::string> Converter::tryParse(std::string str, std::regex pattern)
+tuple<State, string> Converter::tryParse(string str, regex pattern)
 {
 	State flags;
-	std::string matchStr;
+	string matchStr;
 
 	if (str.size() == 0)
 	{
 		flags.setSuccessful(false);
 		flags.setErrorCode(2);
-		flags.setMessage("Empty std::string");
+		flags.setMessage("Empty string");
 	}
 	else
 	{
-		std::smatch match;
-		bool isMatched = std::regex_search(str, match, pattern);
+		smatch match;
+		bool isMatched = regex_search(str, match, pattern);
 		if (!isMatched)
 		{
 			flags.setSuccessful(false);
@@ -52,9 +52,9 @@ std::tuple<State, std::string> Converter::tryParse(std::string str, std::regex p
  *
  * @return A string
  */
-std::string Converter::toString(Date date)
+string Converter::toString(Date date)
 {
-	std::stringstream builder;
+	stringstream builder;
 
 	if (date.isValid())
 	{
@@ -70,7 +70,7 @@ std::string Converter::toString(Date date)
 		builder << "Can not convert to string, date is invalid";
 	}
 
-	std::string result = builder.str();
+	string result = builder.str();
 	return result;
 }
 
@@ -81,9 +81,9 @@ std::string Converter::toString(Date date)
  *
  * @return A string
  */
-std::string Converter::toString(Fraction fraction)
+string Converter::toString(Fraction fraction)
 {
-	std::stringstream builder;
+	stringstream builder;
 	if (fraction.isValid())
 	{
 		builder << fraction.Numerator() << "/" << fraction.Denominator();
@@ -93,7 +93,7 @@ std::string Converter::toString(Fraction fraction)
 		builder << "Can not convert to string, fraction is invalid";
 	}
 
-	std::string result = builder.str();
+	string result = builder.str();
 	return result;
 }
 
@@ -107,18 +107,18 @@ std::string Converter::toString(Fraction fraction)
  *
  * @return A tuple of State and string.
  */
-int Converter::parseInt(const std::string str)
+int Converter::parseInt(const string str)
 {
 	State flags;
-	std::string number;
+	string number;
 	int result = 0;
 
-	tie(flags, number) = tryParse(str, std::regex(NUMBERS));
+	tie(flags, number) = tryParse(str, regex(NUMBERS));
 	if (!flags.Successful())
 	{
-		std::cout << "Can not parse int!\n";
-		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
-		std::cout << "Message: " << flags.Message() << std::endl;
+		cout << "Can not parse int!\n";
+		cout << "Error code: " << flags.ErrorCode() << endl;
+		cout << "Message: " << flags.Message() << endl;
 	}
 	else
 	{
@@ -136,18 +136,18 @@ int Converter::parseInt(const std::string str)
  *
  * @return A tuple of State and string.
  */
-float Converter::parseFloat(const std::string str)
+float Converter::parseFloat(const string str)
 {
 	State flags;
-	std::string number;
+	string number;
 	float result = 0;
 
-	tie(flags, number) = tryParse(str, std::regex(FLOAT));
+	tie(flags, number) = tryParse(str, regex(FLOAT));
 	if (!flags.Successful())
 	{
-		std::cout << "Can not parse float!\n";
-		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
-		std::cout << "Message: " << flags.Message() << std::endl;
+		cout << "Can not parse float!\n";
+		cout << "Error code: " << flags.ErrorCode() << endl;
+		cout << "Message: " << flags.Message() << endl;
 	}
 	else
 	{
@@ -164,25 +164,25 @@ float Converter::parseFloat(const std::string str)
  *
  * @return A shared pointer to a Date object.
  */
-Date Converter::parseDate(const std::string str)
+Date Converter::parseDate(const string str)
 {
 	State flags;
-	std::string date;
-	std::shared_ptr<Date> result = nullptr;
+	string date;
+	shared_ptr<Date> result = nullptr;
 
-	tie(flags, date) = tryParse(str, std::regex(DATE));
+	tie(flags, date) = tryParse(str, regex(DATE));
 	if (!flags.Successful())
 	{
-		std::cout << "Can not parse date!\n";
-		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
-		std::cout << "Message: " << flags.Message() << std::endl;
+		cout << "Can not parse date!\n";
+		cout << "Error code: " << flags.ErrorCode() << endl;
+		cout << "Message: " << flags.Message() << endl;
 	}
 	else
 	{
 		auto tokens = StringHelper::split(date, "/");
-		result = std::make_shared<Date>(parseInt(tokens[0]), parseInt(tokens[1]), parseInt(tokens[2]));
+		result = make_shared<Date>(parseInt(tokens[0]), parseInt(tokens[1]), parseInt(tokens[2]));
 		if (!result->isValid())
-			std::cout << "Invalid date!\n";
+			cout << "Invalid date!\n";
 	}
 
 	return *result;
@@ -195,24 +195,24 @@ Date Converter::parseDate(const std::string str)
  *
  * @return A fraction object.
  */
-Fraction Converter::parseFraction(const std::string str)
+Fraction Converter::parseFraction(const string str)
 {
 	State flags;
-	std::string fraction;
-	std::shared_ptr<Fraction> result = nullptr;
+	string fraction;
+	shared_ptr<Fraction> result = nullptr;
 
-	tie(flags, fraction) = tryParse(str, std::regex(FRACTION));
+	tie(flags, fraction) = tryParse(str, regex(FRACTION));
 	if (!flags.Successful())
 	{
-		std::cout << "Can not parse fraction!\n";
-		std::cout << "Error code: " << flags.ErrorCode() << std::endl;
-		std::cout << "Message: " << flags.Message() << std::endl;
+		cout << "Can not parse fraction!\n";
+		cout << "Error code: " << flags.ErrorCode() << endl;
+		cout << "Message: " << flags.Message() << endl;
 	}
 
 	else
 	{
 		auto tokens = StringHelper::split(fraction, "/");
-		result = std::make_shared<Fraction>(parseInt(tokens[0]), parseInt(tokens[1]));
+		result = make_shared<Fraction>(parseInt(tokens[0]), parseInt(tokens[1]));
 	}
 
 	return *result;

@@ -1,21 +1,21 @@
 #include "StringHelper.h"
 
 /**
- * Given a std::string, it will return a std::vector of std::strings, where each std::string is a substd::string of the original
- * std::string delimited by the del std::string
+ * Given a string, it will return a vector of strings, where each string is a substring of the original
+ * string delimited by the del string
  *
- * @param s The std::string to be parsed.
- * @param del The delimiter std::string.
+ * @param s The string to be parsed.
+ * @param del The delimiter string.
  *
- * @return A std::vector of std::strings.
+ * @return A vector of strings.
  */
-std::vector<std::string> StringHelper::split(std::string s, std::string delimiter)
+vector<string> StringHelper::split(string s, string delimiter)
 {
-	std::vector<std::string> infos;
+	vector<string> infos;
 
 	size_t start = 0;
 	size_t end = (int)s.find(delimiter);
-	while (end != std::string::npos)
+	while (end != string::npos)
 	{
 		infos.push_back(s.substr(start, end - start));
 		start = end + delimiter.size();
@@ -30,14 +30,14 @@ std::vector<std::string> StringHelper::split(std::string s, std::string delimite
  * It removes all leading and trailing characters of a given type, and then removes all instances of
  * that character that are next to each other
  *
- * @param line The std::string to be trimmed.
- * @param character The character to trim from the std::string.
+ * @param line The string to be trimmed.
+ * @param character The character to trim from the string.
  *
- * @return a std::string.
+ * @return a string.
  */
-std::string StringHelper::trim(std::string line, char character)
+string StringHelper::trim(string line, char character)
 {
-	std::string result = line;
+	string result = line;
 	
 	while (result.at(0) == character)
 	{
@@ -65,19 +65,19 @@ std::string StringHelper::trim(std::string line, char character)
 }
 
 /**
- * It takes a std::string and a regex pattern and returns the first match of the pattern in the std::string
+ * It takes a string and a regex pattern and returns the first match of the pattern in the string
  *
- * @param line The std::string to search in
+ * @param line The string to search in
  * @param pattern The pattern to search for.
  *
  * @return The first match of the pattern in the line, if found.
- * If not found, return empty std::string.
+ * If not found, return empty string.
  */
-std::string StringHelper::searchRegex(std::string line, std::string pattern)
+string StringHelper::searchRegex(string line, string pattern)
 {
-	std::regex rgx(pattern);
-	std::smatch match;
-	std::regex_search(line, match, rgx);
+	regex rgx(pattern);
+	smatch match;
+	regex_search(line, match, rgx);
 	if (match.size() >= 1)
 		return match[0];
 	return "";
@@ -90,9 +90,9 @@ std::string StringHelper::searchRegex(std::string line, std::string pattern)
  *
  * @return A string
  */
-std::string StringHelper::toLowerCase(std::string str)
+string StringHelper::toLowerCase(string str)
 {
-	std::string builder;
+	string builder;
 
 	for (size_t i = 0; i < str.length(); i++)
 	{
@@ -109,9 +109,9 @@ std::string StringHelper::toLowerCase(std::string str)
  *
  * @return A string
  */
-std::string StringHelper::toUpperCase(std::string str)
+string StringHelper::toUpperCase(string str)
 {
-	std::string builder;
+	string builder;
 
 	for (size_t i = 0; i < str.length(); i++)
 	{
