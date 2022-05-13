@@ -69,18 +69,26 @@ string StringHelper::trim(string line, char character)
  *
  * @param line The string to search in
  * @param pattern The pattern to search for.
+ * @param index of the match to search for. Index in range: [1, n].
  *
  * @return The first match of the pattern in the line, if found.
  * If not found, return empty string.
  */
-string StringHelper::searchRegex(string line, string pattern)
+string StringHelper::searchRegex(string line, string pattern, size_t index)
 {
 	regex rgx(pattern);
 	smatch match;
-	regex_search(line, match, rgx);
-	if (match.size() >= 1)
-		return match[0];
-	return "";
+	vector<string> matchs;
+
+	while (regex_search(line, match, rgx)) {
+		
+		matchs.push_back(match.str(0));
+		line = match.suffix().str();
+	}
+	
+	if(index <= matchs.size())
+		return matchs[index - 1];
+	return "0";
 }
 
 /**

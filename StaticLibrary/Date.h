@@ -35,7 +35,7 @@ public:
 	bool operator==(Date other);
 };
 
-class DateConverter : public Converter{
+class DateConverter{
 public:
 	string convert(const Date&);
 	Date convertBack(const string);
