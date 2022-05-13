@@ -3,6 +3,7 @@
 #include "Standard.h"
 #include "Flags.h"
 #include "Converter.h"
+#include "StringHelper.h"
 
 class FractionConverterType
 {
